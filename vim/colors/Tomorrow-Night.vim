@@ -56,18 +56,18 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 			else
 				return 9
 			endif
-		else
-			if a:x < 14
-				return 0
-			else
-				let l:n = (a:x - 8) / 10
-				let l:m = (a:x - 8) % 10
-				if l:m < 5
-					return l:n
-				else
-					return l:n + 1
-				endif
-			endif
+"		else
+"			if a:x < 14
+"				return 0
+"			else
+"				let l:n = (a:x - 8) / 10
+"				let l:m = (a:x - 8) % 10
+"				if l:m < 5
+"					return l:n
+"				else
+"					return l:n + 1
+"				endif
+"			endif
 		endif
 	endfun
 
