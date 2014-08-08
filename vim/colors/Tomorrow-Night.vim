@@ -20,7 +20,7 @@ let s:window = "4d5057"
 
 " Console 256 Colours
 if !has("gui_running")
-	let s:background = "303030"
+	"let s:background = "303030"
 	let s:window = "5e5e5e"
 	let s:line = "3a3a3a"
 	let s:selection = "585858"
@@ -56,18 +56,18 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 			else
 				return 9
 			endif
-"		else
-"			if a:x < 14
-"				return 0
-"			else
-"				let l:n = (a:x - 8) / 10
-"				let l:m = (a:x - 8) % 10
-"				if l:m < 5
-"					return l:n
-"				else
-"					return l:n + 1
-"				endif
-"			endif
+		else
+			if a:x < 14
+				return 0
+			else
+				let l:n = (a:x - 8) / 10
+				let l:m = (a:x - 8) % 10
+				if l:m < 5
+					return l:n
+				else
+					return l:n + 1
+				endif
+			endif
 		endif
 	endfun
 
@@ -194,27 +194,27 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		let l:y = <SID>rgb_number(a:g)
 		let l:z = <SID>rgb_number(a:b)
 
-		if l:gx == l:gy && l:gy == l:gz
-			" There are two possibilities
-			let l:dgr = <SID>grey_level(l:gx) - a:r
-			let l:dgg = <SID>grey_level(l:gy) - a:g
-			let l:dgb = <SID>grey_level(l:gz) - a:b
-			let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
-			let l:dr = <SID>rgb_level(l:gx) - a:r
-			let l:dg = <SID>rgb_level(l:gy) - a:g
-			let l:db = <SID>rgb_level(l:gz) - a:b
-			let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
-			if l:dgrey < l:drgb
-				" Use the grey
-				return <SID>grey_colour(l:gx)
-			else
-				" Use the colour
-				return <SID>rgb_colour(l:x, l:y, l:z)
-			endif
-		else
+"		if l:gx == l:gy && l:gy == l:gz
+"			" There are two possibilities
+"			let l:dgr = <SID>grey_level(l:gx) - a:r
+"			let l:dgg = <SID>grey_level(l:gy) - a:g
+"			let l:dgb = <SID>grey_level(l:gz) - a:b
+"			let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
+"			let l:dr = <SID>rgb_level(l:gx) - a:r
+"			let l:dg = <SID>rgb_level(l:gy) - a:g
+"			let l:db = <SID>rgb_level(l:gz) - a:b
+"			let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
+"			if l:dgrey < l:drgb
+"				" Use the grey
+"				return <SID>grey_colour(l:gx)
+"			else
+"				" Use the colour
+"				return <SID>rgb_colour(l:x, l:y, l:z)
+"			endif
+"		else
 			" Only one possibility
 			return <SID>rgb_colour(l:x, l:y, l:z)
-		endif
+"		endif
 	endfun
 
 	" Returns the palette index to approximate the 'rrggbb' hex string
