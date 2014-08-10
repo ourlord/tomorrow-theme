@@ -194,27 +194,27 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		let l:y = <SID>rgb_number(a:g)
 		let l:z = <SID>rgb_number(a:b)
 
-"		if l:gx == l:gy && l:gy == l:gz
-"			" There are two possibilities
-"			let l:dgr = <SID>grey_level(l:gx) - a:r
-"			let l:dgg = <SID>grey_level(l:gy) - a:g
-"			let l:dgb = <SID>grey_level(l:gz) - a:b
-"			let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
-"			let l:dr = <SID>rgb_level(l:gx) - a:r
-"			let l:dg = <SID>rgb_level(l:gy) - a:g
-"			let l:db = <SID>rgb_level(l:gz) - a:b
-"			let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
-"			if l:dgrey < l:drgb
-"				" Use the grey
-"				return <SID>grey_colour(l:gx)
-"			else
-"				" Use the colour
-"				return <SID>rgb_colour(l:x, l:y, l:z)
-"			endif
-"		else
+		if l:gx == l:gy && l:gy == l:gz
+			" There are two possibilities
+			let l:dgr = <SID>grey_level(l:gx) - a:r
+			let l:dgg = <SID>grey_level(l:gy) - a:g
+			let l:dgb = <SID>grey_level(l:gz) - a:b
+			let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
+			let l:dr = <SID>rgb_level(l:gx) - a:r
+			let l:dg = <SID>rgb_level(l:gy) - a:g
+			let l:db = <SID>rgb_level(l:gz) - a:b
+			let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
+			if l:dgrey < l:drgb
+				" Use the grey
+				return <SID>grey_colour(l:gx)
+			else
+				" Use the colour
+				return <SID>rgb_colour(l:x, l:y, l:z)
+			endif
+		else
 			" Only one possibility
 			return <SID>rgb_colour(l:x, l:y, l:z)
-"		endif
+		endif
 	endfun
 
 	" Returns the palette index to approximate the 'rrggbb' hex string
